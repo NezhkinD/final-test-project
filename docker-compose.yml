@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  android-emulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: android-emulator-wikipedia:latest
+    container_name: android-emulator
+    privileged: true
+    environment:
+      - EMULATOR_DEVICE=Samsung Galaxy S10
+      - WEB_VNC=true
+      - WEB_LOG=true
+      - APPIUM=true
+      - APPIUM_HOST=0.0.0.0
+      - APPIUM_PORT=4723
+      - RELAXED_SECURITY=true
+    ports:
+      - "6080:6080"    # noVNC web interface
+      - "4723:4723"    # Appium server
+      - "5554:5554"    # ADB
+      - "5555:5555"    # ADB
+    volumes:
+      - ./target/surefire-reports:/reports
+      - /dev/kvm:/dev/kvm
+    devices:
+      - /dev/kvm
+    networks:
+      - appium-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4723/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 180s
+
+networks:
+  appium-network:
+    driver: bridge

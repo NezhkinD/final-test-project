@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Final Test Project Suite" verbose="1">
+
+    <test name="Web Tests - Habr.com">
+        <classes>
+            <class name="tests.web.HabrTests"/>
+        </classes>
+    </test>
+
+    <test name="Mobile Tests - Wikipedia">
+        <classes>
+            <class name="tests.mobile.WikipediaTests"/>
+        </classes>
+    </test>
+
+</suite>
