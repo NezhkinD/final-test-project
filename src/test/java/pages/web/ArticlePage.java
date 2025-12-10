@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ArticlePage extends BasePage {
 
-    @FindBy(css = "h1.tm-title, h1.tm-article-title")
+    @FindBy(css = "h1")
     private WebElement articleTitle;
 
-    @FindBy(css = ".article-formatted-body, .tm-article-body")
+    @FindBy(css = "article, .article-formatted-body, .tm-article-body")
     private WebElement articleBody;
 
     @FindBy(css = "a.tm-user-info__username")
