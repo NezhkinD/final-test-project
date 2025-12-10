@@ -49,6 +49,15 @@ android.automation.name=UiAutomator2
 make run
 ```
 
+### Запуск только web-тестов
+```bash
+make web
+```
+
+### Запуск только mobile-тестов
+```bash
+make mobile
+```
 Также можно наблюдать за эмулятором через VNC в браузере: http://127.0.0.1:6080
 
 ## Структура проекта
